@@ -14,7 +14,7 @@ html{scroll-behavior:smooth}
 body{background:#050505;color:#f5f5f5;font-family:Plateia,Inter,Arial,sans-serif;overflow-x:hidden}
 a{color:inherit;text-decoration:none}
 body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.085;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");mix-blend-mode:screen;z-index:20}
-nav{position:fixed;top:0;left:0;width:100%;padding:22px 5vw;display:flex;align-items:center;justify-content:space-between;z-index:10;mix-blend-mode:difference}
+nav{position:fixed;top:0;left:0;width:100%;padding:22px 5vw;display:flex;align-items:center;justify-content:space-between;z-index:10;mix-blend-mode:difference;transition:opacity .35s ease,visibility .35s ease,transform .35s ease}
 .logo{display:block;width:48px;line-height:0;flex:0 0 auto;order:1}
 .brand-logo{display:block;width:100%;height:auto;object-fit:contain}
 nav .links{display:flex;gap:18px;font-size:14px;font-weight:900;text-transform:uppercase;justify-content:flex-end;align-items:center;flex-wrap:wrap;max-width:70%;order:2}
@@ -111,7 +111,7 @@ h2:hover{text-shadow:2px 0 rgba(255,35,75,.7),-2px 0 rgba(0,220,255,.7)}
 .social-link{display:inline-flex;align-items:center;gap:9px;border:1px solid #444!important;padding:10px 13px;color:#fff!important;font-size:12px;line-height:1;text-transform:uppercase;transition:.2s}
 .social-link:hover{background:#fff;color:#000!important}
 .social-link i{font-size:16px}
-.youtube-mini{position:fixed;right:22px;bottom:22px;width:min(360px,calc(100vw - 32px));padding:8px;background:#0a0a0a;border:1px solid #444;z-index:18;box-shadow:8px 8px 0 rgba(0,0,0,.35);cursor:grab;user-select:none;touch-action:none;transition:box-shadow .2s ease, transform .2s ease}
+.youtube-mini{position:fixed;right:22px;bottom:22px;width:min(360px,calc(100vw - 32px));padding:8px;background:#0a0a0a;border:1px solid #444;z-index:18;box-shadow:8px 8px 0 rgba(0,0,0,.35);cursor:grab;user-select:none;touch-action:none;transition:opacity .35s ease,visibility .35s ease,box-shadow .2s ease,transform .2s ease}
 .youtube-mini.is-dragging{cursor:grabbing;box-shadow:12px 12px 0 rgba(0,0,0,.4);transform:scale(1.01)}
 .youtube-mini-head{display:flex;align-items:center;justify-content:space-between;padding:5px 3px 8px;color:#fff;font-size:11px;text-transform:uppercase;letter-spacing:1px}
 .youtube-mini-head i{color:#ff0033;margin-right:7px}
@@ -129,6 +129,7 @@ h2:hover{text-shadow:2px 0 rgba(255,35,75,.7),-2px 0 rgba(0,220,255,.7)}
 @keyframes symbolIntro{0%{opacity:0;filter:blur(12px);transform:translate(-50%,-45%) rotate(-16deg) scale(.75)}100%{opacity:.09;filter:blur(0);transform:translate(-50%,-50%) rotate(-7deg) scale(1)}}
 @media(max-width:700px){
  nav{padding:18px 5vw}.logo{width:38px}nav .links{gap:13px;font-size:11px}
+ body.mobile-photo-mode nav{opacity:0;visibility:hidden;transform:translateY(-14px);pointer-events:none}body.mobile-photo-mode .youtube-mini{opacity:0;visibility:hidden;transform:translateY(14px);pointer-events:none}
  .hero{padding-bottom:45px}.hero-bottom{display:block}.hero p{margin:25px 0}
  .hero-photo-stage{height:145vh;min-height:145vh;flex-basis:145vh;margin-top:24px}.hero-photo{height:100vh;min-height:210px}.hero-photo img{height:120%;object-position:center 50%}
  section{padding:75px 5vw}.bio,.booking{grid-template-columns:1fr;gap:40px}
@@ -136,7 +137,7 @@ h2:hover{text-shadow:2px 0 rgba(255,35,75,.7),-2px 0 rgba(0,220,255,.7)}
  .bio{gap:65px}.bio-topic,.bio-topic:nth-child(even){grid-template-columns:1fr;gap:25px}.bio-topic:nth-child(even) .bio-image{order:0}.bio-image,.bio-image img{min-height:230px}
  .releases,.references,.shows{grid-template-columns:1fr}.release{min-height:210px;padding:22px 18px}.release h3{white-space:normal;font-size:16px;line-height:1.15}.release iframe,.release.spotify iframe{height:152px}
  .video-showcase{grid-template-columns:1fr;gap:10px;margin-top:28px}.video-card,.video-card.featured,.video-card iframe,.video-card.featured iframe{min-height:0;height:auto;aspect-ratio:16/9}
- .photo-feature-stage{height:145vh}.event-feature{height:100vh}.event-reel figure{flex-basis:78vw;height:360px}
+ #fotos{padding-left:0;padding-right:0}#fotos .section-head{padding-left:5vw;padding-right:5vw}.photo-feature-stage,.event-reel{width:100%;margin-left:0}.photo-feature-stage{height:145vh}.event-feature{height:100vh}.event-reel figure{flex-basis:78vw;height:360px}
  h1{letter-spacing:-2px}.section-head{margin-bottom:35px;align-items:flex-start;flex-wrap:wrap;gap:12px}.section-head h2{min-width:0;flex:1 1 220px}.hero-kanji{max-width:100vw;overflow:hidden}
  .footer{display:block;line-height:2}.footer-brand{margin-bottom:18px;width:min(230px,70vw)}
  .youtube-mini{right:12px;bottom:12px;width:min(280px,calc(100vw - 56px));padding:6px}.youtube-mini-head{font-size:9px;padding:4px 2px 6px}.youtube-mini-close{font-size:18px}
@@ -361,6 +362,8 @@ h2:hover{text-shadow:2px 0 rgba(255,35,75,.7),-2px 0 rgba(0,220,255,.7)}
   const heroPhotoImage = document.querySelector('.hero-photo img');
   const youtubeMini = document.querySelector('#youtube-mini');
   const youtubePlayer = document.querySelector('#youtube-player');
+  const photosSection = document.querySelector('#fotos');
+  const mobileViewport = window.matchMedia('(max-width: 700px)');
   const youtubeVideos = [
     '5o8nYtGkGPo',
     '0JKrLaMI7fo',
@@ -372,6 +375,20 @@ h2:hover{text-shadow:2px 0 rgba(255,35,75,.7),-2px 0 rgba(0,220,255,.7)}
     '7H43rak98QY'
   ];
   let scrollFrame;
+
+  const updateMobileChrome = (photosVisible) => {
+    document.body.classList.toggle('mobile-photo-mode', mobileViewport.matches && photosVisible);
+  };
+
+  const photosObserver = new IntersectionObserver(([entry]) => {
+    updateMobileChrome(entry.isIntersecting);
+  }, { threshold: 0.1 });
+
+  photosObserver.observe(photosSection);
+  mobileViewport.addEventListener('change', () => {
+    const bounds = photosSection.getBoundingClientRect();
+    updateMobileChrome(bounds.top < window.innerHeight && bounds.bottom > 0);
+  });
 
   youtubePlayer.src = `https://www.youtube-nocookie.com/embed/${youtubeVideos[Math.floor(Math.random() * youtubeVideos.length)]}?rel=0&modestbranding=1`;
   youtubeMini.querySelector('.youtube-mini-close').addEventListener('click', () => youtubeMini.classList.add('is-hidden'));
