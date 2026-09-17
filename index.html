@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AKAPRECTO — é só barulho</title>
+<meta name="description" content="AKAPRECTO — DJ e produtor. Funk bruxaria, trap, hard techno, amapiano, house e black.">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css');
+@font-face{font-family:Plateia;src:url("fonts/Plateia%20Bold.ttf") format("truetype");font-weight:100 900;font-style:normal;font-display:swap}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:#050505;color:#f5f5f5;font-family:Plateia,Inter,Arial,sans-serif;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.085;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");mix-blend-mode:screen;z-index:20}
+nav{position:fixed;top:0;left:0;width:100%;padding:22px 5vw;display:flex;justify-content:space-between;align-items:center;z-index:10;mix-blend-mode:difference}
+.logo{display:block;width:48px;line-height:0}
+.brand-logo{display:block;width:100%;height:auto;object-fit:contain}
+nav .links{display:flex;gap:28px;font-size:14px;font-weight:900;text-transform:uppercase}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:120px 5vw 7vh;position:relative;border-bottom:1px solid #333;overflow:visible}
+.kicker{font-size:12px;letter-spacing:4px;text-transform:uppercase;margin:18px 0 0}
+h1{width:min(76vw,900px);line-height:0}
+.hero-logo{width:100%;height:auto}
+.hero-photo-stage{height:170vh;min-height:170vh;flex:0 0 170vh;position:relative;margin-top:32px}
+.hero-photo{position:sticky;top:0;height:100vh;min-height:260px;overflow:hidden;background:#050505}
+.hero-photo:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,5,5,.15),rgba(5,5,5,.05) 55%,rgba(5,5,5,.45));pointer-events:none}
+.hero-photo img{display:block;width:100%;height:120%;object-fit:cover;object-position:center 50%;transform:translate3d(0,var(--hero-photo-shift,0px),0) scale(1.08);will-change:transform}
+.hero-bottom{display:flex;justify-content:space-between;align-items:end;margin-top:35px;max-width:1100px}
+.hero p{max-width:480px;font-size:13px;line-height:1.6;color:#bbb}
+.cta{border:1px solid #eee;padding:15px 22px;font-size:12px;font-weight:900;text-transform:uppercase;transition:.2s}
+.cta:hover{background:#fff;color:#000}
+.cta:hover,.social-link:hover{box-shadow:4px 0 rgba(255,35,75,.75),-4px 0 rgba(0,220,255,.75)}
+section{padding:110px 5vw;border-bottom:1px solid #292929}
+.section-head{display:flex;justify-content:space-between;gap:30px;align-items:baseline;margin-bottom:55px}
+h2{font:clamp(40px,6vw,88px) Plateia,Inter,Arial,sans-serif;line-height:.9;text-transform:uppercase}
+h2:hover{text-shadow:2px 0 rgba(255,35,75,.7),-2px 0 rgba(0,220,255,.7)}
+.num{font:12px monospace;color:#777}
+.bio{display:grid;gap:90px;max-width:1400px}
+.bio-topic{display:grid;grid-template-columns:minmax(220px,.75fr) minmax(0,1.25fr);gap:7vw;align-items:center}
+.bio-topic:nth-child(even){grid-template-columns:minmax(0,1.25fr) minmax(220px,.75fr)}
+.bio-topic:nth-child(even) .bio-image{order:2}
+.bio-image{position:relative;min-height:280px;overflow:hidden;background:#0a0a0a}
+.bio-image:after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,0,0,.68),rgba(0,0,0,.2) 55%,rgba(0,0,0,.76));mix-blend-mode:multiply}
+.bio-image img{display:block;width:100%;height:100%;min-height:280px;object-fit:cover;filter:grayscale(1) contrast(1.15) brightness(.62);transition:transform .5s ease,filter .5s ease}
+.bio-topic:hover .bio-image img{transform:scale(1.04);filter:grayscale(.55) contrast(1.15) brightness(.72)}
+.bio-copy{position:relative}
+.bio-copy .topic-index{display:block;margin-bottom:15px;color:#777;font:12px monospace;letter-spacing:2px}
+.bio-copy h3{font:clamp(25px,3.2vw,48px) Plateia,Inter,Arial,sans-serif;text-transform:uppercase;line-height:1;margin-bottom:20px}
+.bio-copy p{font-size:clamp(15px,1.45vw,21px);line-height:1.45;font-weight:700}
+.tags{display:flex;flex-wrap:wrap;gap:9px;margin-top:30px}
+.tag{border:1px solid #444;padding:9px 13px;font-size:11px;text-transform:uppercase}
+.releases{display:grid;grid-template-columns:repeat(2,1fr);gap:2px}
+.release{min-height:260px;border:1px solid #282828;padding:28px;display:flex;flex-direction:column;justify-content:space-between;background:#0a0a0a;transition:.25s}
+.release:hover{background:#151515;transform:translateY(-3px)}
+.release iframe{width:100%;height:166px;border:0}
+.release.spotify iframe{height:152px}
+.references{display:grid;grid-template-columns:repeat(2,1fr);gap:2px}
+.reference{border:1px solid #282828;padding:28px;background:#0a0a0a}
+.reference h3{font:clamp(20px,2.5vw,36px) Plateia,Inter,Arial,sans-serif;text-transform:uppercase;line-height:1;margin-bottom:24px}
+.reference iframe{display:block;width:100%;height:352px;border:0}
+.photo-feature-stage{height:170vh;position:relative}
+.event-feature{position:sticky;top:0;height:100vh;overflow:hidden;background:#0a0a0a}
+.event-feature img{display:block;width:100%;height:120%;object-fit:cover;object-position:center 35%;transform:translate3d(0,var(--event-shift,0px),0) scale(var(--event-scale,1.08));will-change:transform}
+.event-feature figcaption{position:absolute;left:28px;bottom:24px;padding:10px 14px;background:rgba(5,5,5,.72);font-size:12px;text-transform:uppercase;letter-spacing:2px}
+.event-reel{display:flex;gap:8px;overflow-x:auto;padding-top:8px;scroll-snap-type:x mandatory;scrollbar-color:#555 #111;scrollbar-width:thin;overscroll-behavior-x:contain;cursor:grab}
+.event-reel:active{cursor:grabbing}
+.event-reel figure{flex:0 0 clamp(220px,28vw,360px);height:300px;overflow:hidden;scroll-snap-align:start;background:#0a0a0a}
+.event-reel img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .35s ease,filter .35s ease}
+.event-reel figure:hover img{transform:scale(1.05);filter:saturate(1.2)}
+.release .year{font:50px Plateia,Inter,Arial,sans-serif;color:#333}
+.release h3{font:clamp(12px,1.8vw,24px) Plateia,Inter,Arial,sans-serif;text-transform:uppercase;line-height:1;white-space:nowrap}
+.release span{font-size:11px;color:#999;text-transform:uppercase}
+.shows{display:flex;gap:2px;overflow-x:auto;padding-bottom:18px;scroll-snap-type:x mandatory;scrollbar-color:#555 #111;scrollbar-width:thin;touch-action:pan-x;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}
+.show{flex:0 0 clamp(250px,32vw,390px);min-height:180px;border:1px solid #292929;padding:24px;display:flex;flex-direction:column;justify-content:space-between;gap:20px;scroll-snap-align:start;background:#0a0a0a}
+.show strong{font:clamp(22px,2.4vw,34px) Plateia,Inter,Arial,sans-serif;line-height:1;text-transform:uppercase}
+.show span{font-size:12px;color:#777}
+.show-description{display:block;max-width:620px;font-size:12px;line-height:1.6;color:#aaa}
+.page-symbol{position:fixed;left:50%;top:50%;width:min(100vw,1100px);height:auto;pointer-events:none;z-index:0;opacity:.09;mix-blend-mode:screen;transform:translate(-50%,-50%) rotate(-7deg);transition:transform .25s ease-out;animation:symbolIntro 1.6s cubic-bezier(.2,.8,.2,1) both}
+.beyond-layout{display:grid;grid-template-columns:minmax(180px,.7fr) minmax(0,1.3fr);gap:8vw;align-items:start}
+.umbrella-logo{display:block;width:min(310px,100%);height:auto;margin:-55px 0 0}
+.beyond-copy{width:100%;max-width:1400px;margin-left:auto}
+.beyond-copy strong{display:block;font:clamp(24px,3vw,44px) Plateia,Inter,Arial,sans-serif;line-height:1;text-transform:uppercase;margin-bottom:18px}
+.beyond-copy p{font-size:clamp(15px,1.45vw,21px);line-height:1.45;font-weight:700}
+.booking{display:grid;grid-template-columns:1.2fr .8fr;gap:8vw;align-items:end}
+.booking h2{font-size:clamp(48px,8vw,110px)}
+.contact{font-size:13px;line-height:2;color:#aaa}
+.contact a{color:#fff;border-bottom:1px solid #555}
+.socials{display:flex;flex-wrap:wrap;gap:12px;margin:24px 0}
+.social-link{display:inline-flex;align-items:center;gap:9px;border:1px solid #444!important;padding:10px 13px;color:#fff!important;font-size:12px;line-height:1;text-transform:uppercase;transition:.2s}
+.social-link:hover{background:#fff;color:#000!important}
+.social-link i{font-size:16px}
+.youtube-mini{position:fixed;right:22px;bottom:22px;width:min(360px,calc(100vw - 32px));padding:8px;background:#0a0a0a;border:1px solid #444;z-index:18;box-shadow:8px 8px 0 rgba(0,0,0,.35)}
+.youtube-mini-head{display:flex;align-items:center;justify-content:space-between;padding:5px 3px 8px;color:#fff;font-size:11px;text-transform:uppercase;letter-spacing:1px}
+.youtube-mini-head i{color:#ff0033;margin-right:7px}
+.youtube-mini-close{border:0;background:none;color:#aaa;font-size:20px;line-height:1;cursor:pointer;padding:0 4px}
+.youtube-mini-close:hover{color:#fff}
+.youtube-mini iframe{display:block;width:100%;aspect-ratio:16/9;border:0}
+.youtube-mini.is-hidden{display:none}
+.footer{padding:25px 5vw;display:flex;justify-content:space-between;align-items:center;gap:30px;font-size:10px;color:#666;text-transform:uppercase}
+.footer-brand{width:min(230px,42vw);height:70px;display:flex;align-items:center;justify-content:flex-start}
+.footer-brand img{display:block;width:100%;height:100%;object-fit:contain;object-position:left center;opacity:0;transition:opacity .45s ease;filter:drop-shadow(2px 0 rgba(255,35,75,.55)) drop-shadow(-2px 0 rgba(0,220,255,.55))}
+.footer-brand img.is-visible{opacity:1}
+.glitch{display:inline-block;position:relative}
+.glitch:hover{animation:glitch .18s steps(2) infinite}
+@keyframes glitch{0%{transform:translate(0)}25%{transform:translate(4px,-2px)}50%{transform:translate(-3px,2px)}75%{transform:translate(2px,1px)}100%{transform:translate(0)}}
+@keyframes symbolIntro{0%{opacity:0;filter:blur(12px);transform:translate(-50%,-45%) rotate(-16deg) scale(.75)}100%{opacity:.09;filter:blur(0);transform:translate(-50%,-50%) rotate(-7deg) scale(1)}}
+@media(max-width:700px){
+ nav{padding:18px 5vw}.logo{width:38px}nav .links{gap:13px;font-size:11px}
+ .hero{padding-bottom:45px}.hero-bottom{display:block}.hero p{margin:25px 0}
+ .hero-photo-stage{height:145vh;min-height:145vh;flex-basis:145vh;margin-top:24px}.hero-photo{height:100vh;min-height:210px}.hero-photo img{height:120%;object-position:center 50%}
+ section{padding:75px 5vw}.bio,.booking{grid-template-columns:1fr;gap:40px}
+ .beyond-layout{grid-template-columns:1fr;gap:35px}.beyond-copy{width:100%}.umbrella-logo{margin-top:-30px}
+ .bio{gap:65px}.bio-topic,.bio-topic:nth-child(even){grid-template-columns:1fr;gap:25px}.bio-topic:nth-child(even) .bio-image{order:0}.bio-image,.bio-image img{min-height:230px}
+ .releases,.references,.shows{grid-template-columns:1fr}.release{min-height:210px}
+ .photo-feature-stage{height:145vh}.event-feature{height:100vh}.event-reel figure{flex-basis:78vw;height:360px}
+ h1{letter-spacing:-2px}.section-head{margin-bottom:35px}
+ .footer{display:block;line-height:2}.footer-brand{margin-bottom:18px;width:min(230px,70vw)}
+ .youtube-mini{right:16px;bottom:16px}
+}
+</style>
+</head>
+<body>
+<img class="page-symbol" src="LOGO%20PNG/simbolo%20em%20mov%20BRANCO.png" alt="" aria-hidden="true">
+<nav>
+  <a class="logo glitch" href="#inicio" aria-label="AKAPRECTO"><img class="brand-logo" src="LOGO%20PNG/simbolo%20BRANCO.png" alt="AKAPRECTO"></a>
+  <div class="links"><a href="#sobre">sobre</a><a href="#musica">música</a><a href="#referencias">referências</a><a href="#fotos">fotos</a><a href="#shows">shows</a><a href="#booking">booking</a></div>
+</nav>
+
+<header class="hero" id="inicio">
+  <h1 class="glitch"><img class="brand-logo hero-logo" src="LOGO%20PNG/logo%20horizontal%20BRANCO.png" alt="AKAPRECTO"></h1>
+  <div class="kicker">DJ / PRODUTOR — SÃO PAULO, BR</div>
+  <div class="hero-photo-stage">
+    <figure class="hero-photo">
+      <img src="IMG_7967_Original%20copy.jpg" alt="Umbrellas, artistas e equipamento em um evento">
+    </figure>
+  </div>
+  <div class="hero-bottom">
+    <p>Funk bruxaria, grave, textura e caos controlado. Um projeto que atravessa gêneros sem pedir licença.</p>
+    <a class="cta" href="#booking">contrate o artista ↗</a>
+  </div>
+</header>
+
+<section id="sobre">
+  <div class="section-head"><h2>sobre</h2><span class="num">01 / 07</span></div>
+  <div class="bio">
+    <article class="bio-topic">
+      <figure class="bio-image"><img src="FOTOS%20E%20V%C3%8DDEOS/@EYEOFPOLILLO%20(10).jpeg" alt="AKAPRECTO em um evento"></figure>
+      <div class="bio-copy"><span class="topic-index">01 / ORIGEM</span><h3>Origem e identidade</h3><p>AKAPRECTO é DJ e produtor musical da Zona Leste de São Paulo, negro, criado entre a cultura urbana, a rua e as diferentes formas de expressão que atravessam a periferia. Seu nome artístico nasceu de um apelido e, com o tempo, deixou de ser apenas uma identificação para se transformar em linguagem, estética e representação.</p></div>
+    </article>
+    <article class="bio-topic">
+      <figure class="bio-image"><img src="FOTOS%20E%20V%C3%8DDEOS/@neveex-8265.jpeg" alt="Detalhe de uma apresentação"></figure>
+      <div class="bio-copy"><span class="topic-index">02 / REFERÊNCIAS</span><h3>Samples, beats e textura</h3><p>Sua relação com a música começou em 2020, através da produção musical e da curiosidade em entender como diferentes sons poderiam se transformar em algo próprio. O hip hop teve um papel fundamental nesse processo, principalmente através de produtores como J Dilla, 9th Wonder, The Alchemist, DJ Premier e Nujabes, referências que despertaram seu interesse por samples, texturas, construção de beats e pela capacidade de transformar elementos simples em atmosferas complexas.</p></div>
+    </article>
+    <article class="bio-topic">
+      <figure class="bio-image"><img src="FOTOS%20E%20V%C3%8DDEOS/@EYEOFPOLILLO%20(13).jpeg" alt="AKAPRECTO em performance"></figure>
+      <div class="bio-copy"><span class="topic-index">03 / PESQUISA</span><h3>Funk bruxaria</h3><p>A partir de 2023, sua pesquisa ganhou novos caminhos e passou a se aprofundar nas diferentes vertentes do funk, encontrando no funk bruxaria um dos principais pontos de conexão com sua identidade artística. A partir daí, AKAPRECTO começou a desenvolver uma estética marcada por graves fortes, batidas intensas, atmosferas densas, recortes inesperados e uma constante busca por tensão e movimento.</p></div>
+    </article>
+    <article class="bio-topic">
+      <figure class="bio-image"><img src="FOTOS%20E%20V%C3%8DDEOS/RID01342.jpg" alt="AKAPRECTO tocando para o público"></figure>
+      <div class="bio-copy"><span class="topic-index">04 / UNIVERSO</span><h3>Entre o estúdio e a pista</h3><p>Sua produção não se limita a um gênero. Funk, trap, hard techno, amapiano, house, black music e outras vertentes aparecem como ferramentas dentro de um processo de experimentação contínua. Mais do que reproduzir referências, sua intenção é absorvê-las, desconstruí-las e reorganizá-las até encontrar uma sonoridade que faça sentido dentro do seu próprio universo.</p><p>Como DJ, essa mesma filosofia se transforma em narrativa. Seus sets são construídos a partir da leitura do ambiente e do público, explorando contrastes de energia, ritmo e atmosfera. A pista deixa de ser apenas um lugar onde a música acontece e passa a fazer parte da própria criação.</p></div>
+    </article>
+    <article class="bio-topic">
+      <figure class="bio-image"><img src="FOTOS%20E%20V%C3%8DDEOS/@brsnasx(3).png" alt="AKAPRECTO no palco"></figure>
+      <div class="bio-copy"><span class="topic-index">05 / VISÃO</span><h3>Vivência e personalidade</h3><p>Para AKAPRECTO, produzir música é também registrar uma vivência. É transformar referências, experiências, influências e sentimentos em matéria sonora. Sua pesquisa parte da cultura que o formou, mas não se prende a ela de maneira estática. Existe sempre a intenção de avançar, experimentar e encontrar novas formas de expressão.</p><p>Entre o estúdio e a pista, AKAPRECTO constrói uma identidade que não depende de uma única definição. Seu trabalho é marcado pela mistura, pelo risco e pela busca de personalidade. Um universo sonoro onde o grave encontra a textura, o caos encontra o controle e diferentes linguagens podem coexistir sem perder sua essência.</p><div class="tags"><span class="tag">funk bruxaria</span><span class="tag">trap</span><span class="tag">hard techno</span><span class="tag">amapiano</span><span class="tag">house</span><span class="tag">black music</span><span class="tag">samba rock</span></div></div>
+    </article>
+  </div>
+</section>
+
+<section id="musica">
+  <div class="section-head"><h2>música</h2><span class="num">02 / 07</span></div>
+  <div class="releases">
+    <div class="release">
+      <h3>BRUXARIA MEDLEY DE IGARATÁ 3</h3>
+      <iframe title="Bruxaria Medley de Igaratá 3" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/akaprecto/bruxaria-medley-de-igarata-3&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+    </div>
+    <div class="release">
+      <h3>SEQUÊNCIA MALIGNA E NOSTÁLGICA DA FURACÃO 2000</h3>
+      <iframe title="Sequência Maligna e Nostálgica" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/akaprecto/sequencia-maligna-e-nostalgica&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+    </div>
+    <div class="release">
+      <h3>SUCESSADA - BRUXARIA DO BEAT BOLHA</h3>
+      <iframe title="Sucessada Bruxaria do Beat" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/akaprecto/sucessada-bruxaria-do-beat&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+    </div>
+    <div class="release spotify">
+      <h3>EU VOU JOGAR</h3>
+      <iframe title="Faixa do AKAPRECTO no Spotify" src="https://open.spotify.com/embed/track/1QhBdx9e3iDy1inGRfyfd0?utm_source=generator" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    </div>
+  </div>
+</section>
+
+<section id="referencias">
+  <div class="section-head"><h2>referências musicais</h2><span class="num">03 / 07</span></div>
+  <div class="references">
+    <div class="reference">
+      <h3>Playlist de referências 01</h3>
+      <iframe title="Playlist de referências musicais 01" src="https://open.spotify.com/embed/playlist/20FmkIzK8p6aCGKCBxsZjx?utm_source=generator" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    </div>
+    <div class="reference">
+      <h3>Playlist de referências 02</h3>
+      <iframe title="Playlist de referências musicais 02" src="https://open.spotify.com/embed/playlist/3IJ2fwwcuu3CfH0LtOjZ8e?utm_source=generator" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    </div>
+  </div>
+</section>
+
+<section id="fotos">
+  <div class="section-head"><h2>fotos</h2><span class="num">04 / 07</span></div>
+  <div class="photo-feature-stage">
+    <figure class="event-feature">
+      <img src="FOTOS%20E%20V%C3%8DDEOS/@brsnasx(1).png" alt="AKAPRECTO tocando em um evento">
+      <figcaption>pista, grave e presença</figcaption>
+    </figure>
+  </div>
+  <div class="event-reel" aria-label="Fotos de eventos">
+    <figure><img src="FOTOS%20E%20V%C3%8DDEOS/@EYEOFPOLILLO%20(2).jpeg" alt="AKAPRECTO em apresentação"></figure>
+    <figure><img src="FOTOS%20E%20V%C3%8DDEOS/@EYEOFPOLILLO%20(4).jpeg" alt="Registro de evento"></figure>
+    <figure><img src="FOTOS%20E%20V%C3%8DDEOS/@neveex-8269.jpeg" alt="AKAPRECTO em evento"></figure>
+    <figure><img src="FOTOS%20E%20V%C3%8DDEOS/DSC_7807.JPG" alt="Registro de show"></figure>
+    <figure><img src="FOTOS%20E%20V%C3%8DDEOS/IMG_7949_Original.JPG" alt="Registro de apresentação"></figure>
+    <figure><img src="FOTOS%20E%20V%C3%8DDEOS/IMG_7980_Original.JPG" alt="Registro de apresentação"></figure>
+    <figure><img src="FOTOS%20E%20V%C3%8DDEOS/DSC_7822.JPG" alt="AKAPRECTO no palco"></figure>
+    <figure><img src="FOTOS%20E%20V%C3%8DDEOS/_DSC6571.jpg" alt="Público em evento"></figure>
+    <figure><img src="FOTOS%20E%20V%C3%8DDEOS/49E82216-98C3-4625-9FAD-DE688B0E91E4.jpg" alt="AKAPRECTO em apresentação"></figure>
+    <figure><img src="FOTOS%20E%20V%C3%8DDEOS/@brsnasx(2).png" alt="Registro de evento"></figure>
+    <figure><img src="FOTOS%20E%20V%C3%8DDEOS/EYEOFPOLILLO-3.jpeg" alt="Registro de apresentação"></figure>
+    <figure><img src="FOTOS%20E%20V%C3%8DDEOS/DSC_7821.JPG" alt="Público em evento"></figure>
+    <figure><img src="FOTOS%20E%20V%C3%8DDEOS/RID01344.jpg" alt="AKAPRECTO no palco"></figure>
+  </div>
+</section>
+
+<section id="shows">
+  <div class="section-head"><h2>shows</h2><span class="num">05 / 07</span></div>
+  <div class="shows">
+    <div class="show"><strong>Baile do Helipa</strong><span>2026</span></div>
+    <div class="show"><strong>Insurgência Artivista</strong><span>2026</span></div>
+    <div class="show"><strong>Salseiro Trackswing</strong><span>2025</span></div>
+    <div class="show"><strong>Pião Brabo</strong><span>2026</span></div>
+    <div class="show"><strong>TechnoDeck</strong><span>2025</span></div>
+    <div class="show"><strong>Oshiouy and Friends</strong><span>2026</span></div>
+    <div class="show"><strong>Met &amp; Rala</strong><span>2026</span></div>
+    <div class="show"><strong>Space</strong><span>2026</span></div>
+    <div class="show"><strong>Audição Rafinha Dz7</strong><span>Album "O Rei da Bruxaria" · 2026</span></div>
+    <div class="show"><strong>BDX</strong><span>2026</span></div>
+    <div class="show"><strong>EmTranse</strong><span>2026</span></div>
+    <div class="show"><strong>Sessão de Kriya</strong><span>2026</span></div>
+    <div class="show"><strong>Galpão ZN</strong><span>2023-2024</span></div>
+    <div class="show"><strong>Amata</strong><span>2024</span></div>
+    <div class="show"><strong>Akabaile</strong><span>2024</span></div>
+    <div class="show"><strong>Nosso Baile</strong><span>2024-2025</span></div>
+  </div>
+</section>
+
+<section id="alem-dos-shows">
+  <div class="section-head"><h2>além dos shows</h2><span class="num">06 / 07</span></div>
+  <div class="beyond-layout">
+    <img class="umbrella-logo" src="Logo%20MDU%20branco_sem%20fundo.png" alt="Os Menino da Umbrella">
+    <div class="show-description beyond-copy">
+      <strong>Os Menino da Umbrella</strong>
+      <p>participa ativamente junto com a SUB e integra o coletivo Os Menino da Umbrella, marcado pela estética dos guarda-chuvas e pela presença forte na cena urbana.</p>
+    </div>
+  </div>
+</section>
+
+<section id="booking">
+  <div class="section-head"><h2>booking</h2><span class="num">07 / 07</span></div>
+  <div class="booking">
+    <h2 class="glitch">é só<br>barulho.</h2>
+    <div class="contact">
+      <p>Interessado em levar o AKAPRECTO para seu evento?</p>
+      <br>
+      <div class="socials">
+        <a class="social-link" href="https://instagram.com/djakaprecto" target="_blank" rel="noopener" aria-label="Instagram djakaprecto"><i class="fa-brands fa-instagram" aria-hidden="true"></i><span>djakaprecto</span></a>
+        <a class="social-link" href="https://x.com/akaprecto" target="_blank" rel="noopener" aria-label="X akaprecto"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i><span>akaprecto</span></a>
+        <a class="social-link" href="https://tiktok.com/@akaprecto" target="_blank" rel="noopener" aria-label="TikTok akaprecto"><i class="fa-brands fa-tiktok" aria-hidden="true"></i><span>akaprecto</span></a>
+        <a class="social-link" href="https://www.youtube.com/@akaprecto" target="_blank" rel="noopener" aria-label="YouTube AKAPRECTO"><i class="fa-brands fa-youtube" aria-hidden="true"></i><span>akaprecto</span></a>
+        <a class="social-link" href="https://open.spotify.com/artist/7nYcp3bviNe554LmrOfGNU?si=VB2lWPpETAWUYsBRR1MIvg" target="_blank" rel="noopener" aria-label="Spotify AKAPRECTO"><i class="fa-brands fa-spotify" aria-hidden="true"></i><span>Spotify</span></a>
+        <a class="social-link" href="https://soundcloud.com/akaprecto" target="_blank" rel="noopener" aria-label="SoundCloud AKAPRECTO"><i class="fa-brands fa-soundcloud" aria-hidden="true"></i><span>SoundCloud</span></a>
+      </div>
+      <p>E-mail: <a href="mailto:contato.akaprecto@gmail.com">contato.akaprecto@gmail.com</a></p>
+      <p>Produtor: <a href="https://wa.me/5511961814442?text=Ol%C3%A1%2C%20gostaria%20de%20contratar%20o%20AKAPRECTO%20para%20uma%20apresenta%C3%A7%C3%A3o%20em%20meu%20evento." target="_blank" rel="noopener">solicitar contratação ↗</a></p>
+      <br>
+      <a class="cta" href="mailto:contato.akaprecto@gmail.com">falar sobre booking ↗</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-brand"><img id="footer-logo" src="LOGO%20PNG/logo%20horizontal%20BRANCO.png" alt="Logo AKAPRECTO"></div>
+  <span>AKAPRECTO © 2026</span>
+  <span>DJ / PRODUCER / É SÓ BARULHO</span>
+</footer>
+<aside class="youtube-mini" id="youtube-mini" aria-label="Miniplayer do YouTube">
+  <div class="youtube-mini-head"><span><i class="fa-brands fa-youtube" aria-hidden="true"></i>AKAPRECTO</span><button class="youtube-mini-close" type="button" aria-label="Fechar miniplayer">&times;</button></div>
+  <iframe id="youtube-player" title="Vídeo do AKAPRECTO no YouTube" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</aside>
+<script>
+  const pageSymbol = document.querySelector('.page-symbol');
+  const footerLogo = document.querySelector('#footer-logo');
+  const whiteLogos = [
+    ['LOGO%20PNG/logo%20horiz%20%2B%20simb%20BRANCO.png', 'Logo AKAPRECTO horizontal com símbolo'],
+    ['LOGO%20PNG/logo%20horizontal%20BRANCO.png', 'Logo AKAPRECTO horizontal'],
+    ['LOGO%20PNG/logo%20vert%20%2B%20simb%20BRANCO.png', 'Logo AKAPRECTO vertical com símbolo'],
+    ['LOGO%20PNG/logo%20vertical%20BRANCO.png', 'Logo AKAPRECTO vertical'],
+    ['LOGO%20PNG/simbolo%20BRANCO.png', 'Símbolo AKAPRECTO'],
+    ['LOGO%20PNG/simbolo%20em%20mov%20BRANCO.png', 'Símbolo AKAPRECTO em movimento'],
+    ['Logo%20MDU%20branco_sem%20fundo.png', 'Logo Os Menino da Umbrella']
+  ];
+  let footerLogoIndex = 1;
+  const eventFeature = document.querySelector('.event-feature');
+  const eventFeatureImage = document.querySelector('.event-feature img');
+  const photoStage = document.querySelector('.photo-feature-stage');
+  const eventReel = document.querySelector('.event-reel');
+  const heroPhotoStage = document.querySelector('.hero-photo-stage');
+  const heroPhotoImage = document.querySelector('.hero-photo img');
+  const youtubeMini = document.querySelector('#youtube-mini');
+  const youtubePlayer = document.querySelector('#youtube-player');
+  const youtubeVideos = [
+    '5o8nYtGkGPo',
+    '0JKrLaMI7fo',
+    '_VIVNJbUUAs',
+    'Wzr3kMxbxwc',
+    '67rYAndlKoc',
+    'fGaEujWHXzg',
+    'mB2bJ-GxxIk',
+    '7H43rak98QY'
+  ];
+  let scrollFrame;
+
+  youtubePlayer.src = `https://www.youtube-nocookie.com/embed/${youtubeVideos[Math.floor(Math.random() * youtubeVideos.length)]}?rel=0&modestbranding=1`;
+  youtubeMini.querySelector('.youtube-mini-close').addEventListener('click', () => youtubeMini.classList.add('is-hidden'));
+
+  const showNextFooterLogo = () => {
+    footerLogo.classList.remove('is-visible');
+    setTimeout(() => {
+      const [source, description] = whiteLogos[footerLogoIndex];
+      footerLogo.src = source;
+      footerLogo.alt = description;
+      footerLogo.classList.add('is-visible');
+      footerLogoIndex = (footerLogoIndex + 1) % whiteLogos.length;
+    }, 450);
+  };
+
+  footerLogo.classList.add('is-visible');
+  setInterval(showNextFooterLogo, 2800);
+
+  const updateEventParallax = () => {
+    const bounds = photoStage.getBoundingClientRect();
+    const travel = Math.max(bounds.height - window.innerHeight, 1);
+    const progress = Math.min(Math.max(-bounds.top / travel, 0), 1);
+    const shift = -(progress - 0.5) * 150;
+    const scale = 1.14 - progress * 0.08;
+    eventFeatureImage.style.transform = `translate3d(0, ${shift}px, 0) scale(${scale})`;
+    scrollFrame = null;
+  };
+
+  const updateHeroParallax = () => {
+    const bounds = heroPhotoStage.getBoundingClientRect();
+    const travel = Math.max(bounds.height - window.innerHeight, 1);
+    const progress = Math.min(Math.max(-bounds.top / travel, 0), 1);
+    const shift = (progress - 0.5) * 150;
+    const scale = 1.14 - progress * 0.08;
+    heroPhotoImage.style.transform = `translate3d(0, ${shift}px, 0) scale(${scale})`;
+  };
+
+  window.addEventListener('scroll', () => {
+    if (!scrollFrame) scrollFrame = requestAnimationFrame(updateEventParallax);
+    updateHeroParallax();
+  }, { passive: true });
+  updateEventParallax();
+  updateHeroParallax();
+
+  const cards = Array.from(eventReel.children);
+  for (let index = cards.length - 1; index > 0; index -= 1) {
+    const randomIndex = Math.floor(Math.random() * (index + 1));
+    [cards[index], cards[randomIndex]] = [cards[randomIndex], cards[index]];
+  }
+  cards.forEach((card) => eventReel.appendChild(card));
+
+  eventReel.addEventListener('wheel', (event) => {
+    if (Math.abs(event.deltaY) <= Math.abs(event.deltaX)) return;
+    const canMoveLeft = eventReel.scrollLeft > 0;
+    const canMoveRight = eventReel.scrollLeft + eventReel.clientWidth < eventReel.scrollWidth - 1;
+    if ((event.deltaY < 0 && canMoveLeft) || (event.deltaY > 0 && canMoveRight)) {
+      event.preventDefault();
+      eventReel.scrollLeft += event.deltaY;
+    }
+  }, { passive: false });
+
+  window.addEventListener('pointermove', (event) => {
+    const moveX = (event.clientX / window.innerWidth - 0.5) * 34;
+    const moveY = (event.clientY / window.innerHeight - 0.5) * 34;
+    pageSymbol.style.transform = `translate(calc(-50% + ${moveX}px), calc(-50% + ${moveY}px)) rotate(-7deg)`;
+  });
+</script>
+</body>
+</html>
