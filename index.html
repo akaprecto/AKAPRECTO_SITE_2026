@@ -134,7 +134,7 @@ h2:hover{text-shadow:2px 0 rgba(255,35,75,.7),-2px 0 rgba(0,220,255,.7)}
  img,iframe,video{max-width:100%}
  nav{padding:18px 5vw;gap:10px}.logo{width:38px}nav .links{min-width:0;max-width:calc(100% - 48px);gap:13px;font-size:11px}nav .links a{overflow-wrap:anywhere}
  body.mobile-photo-mode nav{opacity:0;visibility:hidden;transform:translateY(-14px);pointer-events:none}body.mobile-photo-mode .youtube-mini{opacity:0;visibility:hidden;transform:translateY(14px);pointer-events:none}
- .hero{padding-bottom:45px}.hero-bottom{display:block}.hero p{margin:25px 0}
+ .hero{padding-bottom:45px}.hero-bottom{display:block;position:relative;z-index:2;margin:-62px 0 0;padding:22px 20px;background:rgba(10,10,10,.94);border:1px solid #3a3a3a;box-shadow:8px 8px 0 rgba(0,0,0,.3);backdrop-filter:blur(8px)}.hero p{margin:0 0 20px}.hero-bottom .cta{display:inline-flex}
  .hero-photo-stage{height:145vh;min-height:145vh;flex-basis:145vh;margin-top:24px}.hero-photo{height:100vh;min-height:210px}.hero-photo img{height:120%;object-position:center 50%}
  section{padding:75px 5vw}.bio,.booking{grid-template-columns:1fr;gap:40px}
  .beyond-layout{grid-template-columns:1fr;gap:35px}.beyond-copy{width:100%}.umbrella-logo{margin-top:-30px}
@@ -142,16 +142,17 @@ h2:hover{text-shadow:2px 0 rgba(255,35,75,.7),-2px 0 rgba(0,220,255,.7)}
  .releases,.references,.shows{grid-template-columns:1fr}.release{min-height:210px;padding:22px 18px}.release h3{white-space:normal;font-size:16px;line-height:1.15}.release iframe,.release.spotify iframe{height:152px}
  .video-showcase{grid-template-columns:1fr;gap:10px;margin-top:28px}.video-card,.video-card.featured,.video-card iframe,.video-card.featured iframe{min-height:0;height:auto;aspect-ratio:16/9}
  #fotos{padding-left:0;padding-right:0}#fotos .section-head{padding-left:5vw;padding-right:5vw}.photo-feature-stage{width:100%;margin-left:0}.photo-feature-stage{height:145vh}.event-feature{height:100vh}
- .event-reel,.shows{display:grid;grid-template-columns:1fr;overflow-x:hidden;scroll-snap-type:none;touch-action:pan-y;padding:8px 5vw 0}
- .event-reel figure,.show{width:100%;max-width:100%;min-width:0;flex:initial;scroll-snap-align:none}
- .event-reel figure{height:300px}.shows{padding:0}.show{min-height:150px}
+ .event-reel,.shows{display:flex;gap:8px;width:100%;max-width:100%;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-color:#555 #111;scrollbar-width:thin;overscroll-behavior-x:contain;touch-action:pan-x;-webkit-overflow-scrolling:touch}
+ .event-reel{padding:8px 5vw 14px}.shows{padding:0 0 18px}
+ .event-reel figure,.show{min-width:0;scroll-snap-align:start}
+ .event-reel figure{flex:0 0 78vw;height:300px}.show{flex:0 0 min(84vw,340px);min-height:150px}
  .event-feature figcaption{max-width:calc(100% - 56px);overflow-wrap:anywhere}
  .release{gap:20px;justify-content:flex-start}.release h3{margin-bottom:2px}
  h1{letter-spacing:-2px}.section-head{margin-bottom:35px;align-items:flex-start;flex-wrap:wrap;gap:12px}.section-head h2{min-width:0;flex:1 1 220px}
  #referencias .section-head h2{font-size:clamp(30px,9vw,42px);line-height:.95}
  .mobile-break{display:block}
  h2,.bio-copy h3,.release h3,.reference h3,.show strong,.contact a,.social-link span{overflow-wrap:anywhere;word-break:break-word}
- .hero-kanji{font-size:clamp(72px,20vw,128px);letter-spacing:-.08em}
+ .hero-kanji{font-size:clamp(88px,26vw,160px);letter-spacing:-.08em}
  .footer{display:block;line-height:2}.footer-brand{margin-bottom:18px;width:min(230px,70vw)}
  .youtube-mini{right:12px;bottom:12px;width:min(280px,calc(100vw - 56px));max-width:calc(100vw - 24px);padding:6px;touch-action:pan-y}.youtube-mini-head{font-size:9px;padding:4px 2px 6px}.youtube-mini-close{font-size:18px}
 }
