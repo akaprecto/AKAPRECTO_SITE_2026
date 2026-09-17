@@ -14,14 +14,18 @@ html{scroll-behavior:smooth}
 body{background:#050505;color:#f5f5f5;font-family:Plateia,Inter,Arial,sans-serif;overflow-x:hidden}
 a{color:inherit;text-decoration:none}
 body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.085;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");mix-blend-mode:screen;z-index:20}
-nav{position:fixed;top:0;left:0;width:100%;padding:22px 5vw;display:flex;justify-content:space-between;align-items:center;z-index:10;mix-blend-mode:difference}
-.logo{display:block;width:48px;line-height:0}
+nav{position:fixed;top:0;left:0;width:100%;padding:22px 5vw;display:flex;align-items:center;justify-content:space-between;z-index:10;mix-blend-mode:difference}
+.logo{display:block;width:48px;line-height:0;flex:0 0 auto;order:1}
 .brand-logo{display:block;width:100%;height:auto;object-fit:contain}
-nav .links{display:flex;gap:28px;font-size:14px;font-weight:900;text-transform:uppercase}
-.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:120px 5vw 7vh;position:relative;border-bottom:1px solid #333;overflow:visible}
+nav .links{display:flex;gap:18px;font-size:14px;font-weight:900;text-transform:uppercase;justify-content:flex-end;align-items:center;flex-wrap:wrap;max-width:70%;order:2}
+.nav-spacer{display:none}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:120px 5vw 7vh;position:relative;overflow:visible}
 .kicker{font-size:12px;letter-spacing:4px;text-transform:uppercase;margin:18px 0 0}
-h1{width:min(76vw,900px);line-height:0}
-.hero-logo{width:100%;height:auto}
+h1{width:min(76vw,900px);line-height:0;margin:0 auto}
+.hero-brand{position:relative;display:flex;align-items:flex-end;justify-content:center;width:min(76vw,920px);margin:0 auto}
+.hero-kanji{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-family:"Noto Sans JP","Yu Gothic","Hiragino Kaku Gothic Pro",sans-serif;font-size:clamp(180px,25vw,760px);line-height:.8;letter-spacing:-0.08em;color:rgba(255,255,255,.08);font-weight:900;user-select:none;pointer-events:none;z-index:0;white-space:nowrap}
+.hero-logo-wrap{position:relative;z-index:1;width:100%}
+.hero-logo{width:100%;height:auto;display:block;margin:0 auto}
 .hero-photo-stage{height:170vh;min-height:170vh;flex:0 0 170vh;position:relative;margin-top:32px}
 .hero-photo{position:sticky;top:0;height:100vh;min-height:260px;overflow:hidden;background:#050505}
 .hero-photo:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,5,5,.15),rgba(5,5,5,.05) 55%,rgba(5,5,5,.45));pointer-events:none}
@@ -31,7 +35,7 @@ h1{width:min(76vw,900px);line-height:0}
 .cta{border:1px solid #eee;padding:15px 22px;font-size:12px;font-weight:900;text-transform:uppercase;transition:.2s}
 .cta:hover{background:#fff;color:#000}
 .cta:hover,.social-link:hover{box-shadow:4px 0 rgba(255,35,75,.75),-4px 0 rgba(0,220,255,.75)}
-section{padding:110px 5vw;border-bottom:1px solid #292929}
+section{padding:110px 5vw;border-bottom:none}
 .section-head{display:flex;justify-content:space-between;gap:30px;align-items:baseline;margin-bottom:55px}
 h2{font:clamp(40px,6vw,88px) Plateia,Inter,Arial,sans-serif;line-height:.9;text-transform:uppercase}
 h2:hover{text-shadow:2px 0 rgba(255,35,75,.7),-2px 0 rgba(0,220,255,.7)}
@@ -71,12 +75,29 @@ h2:hover{text-shadow:2px 0 rgba(255,35,75,.7),-2px 0 rgba(0,220,255,.7)}
 .release .year{font:50px Plateia,Inter,Arial,sans-serif;color:#333}
 .release h3{font:clamp(12px,1.8vw,24px) Plateia,Inter,Arial,sans-serif;text-transform:uppercase;line-height:1;white-space:nowrap}
 .release span{font-size:11px;color:#999;text-transform:uppercase}
+.video-showcase{display:grid;grid-template-columns:1.3fr .7fr;gap:2px;margin-top:36px}
+.video-card{border:1px solid #282828;background:#0a0a0a;overflow:hidden;min-height:260px}
+.video-card iframe{display:block;width:100%;height:100%;min-height:260px;border:0}
+.video-card.featured{min-height:420px}
+.video-card.featured iframe{min-height:420px}
+.video-final-wrap{background:transparent;padding:0;display:block;width:100%;margin:0 auto;max-width:1600px;border:none}
+.video-final-wrap video{display:block;width:100%;height:auto;max-height:88vh;aspect-ratio:16/9;object-fit:cover;background:#050505;border:0;border-radius:0;outline:none;box-shadow:none}
+.video-final-wrap video::-webkit-media-controls-panel{display:none !important}
+.video-final-wrap video::-webkit-media-controls-play-button,
+.video-final-wrap video::-webkit-media-controls-current-time-display,
+.video-final-wrap video::-webkit-media-controls-time-remaining-display,
+.video-final-wrap video::-webkit-media-controls-timeline,
+.video-final-wrap video::-webkit-media-controls-volume-slider,
+.video-final-wrap video::-webkit-media-controls-mute-button,
+.video-final-wrap video::-webkit-media-controls-fullscreen-button,
+.video-final-wrap video::-webkit-media-controls-enclosure{display:none !important}
 .shows{display:flex;gap:2px;overflow-x:auto;padding-bottom:18px;scroll-snap-type:x mandatory;scrollbar-color:#555 #111;scrollbar-width:thin;touch-action:pan-x;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}
 .show{flex:0 0 clamp(250px,32vw,390px);min-height:180px;border:1px solid #292929;padding:24px;display:flex;flex-direction:column;justify-content:space-between;gap:20px;scroll-snap-align:start;background:#0a0a0a}
 .show strong{font:clamp(22px,2.4vw,34px) Plateia,Inter,Arial,sans-serif;line-height:1;text-transform:uppercase}
 .show span{font-size:12px;color:#777}
 .show-description{display:block;max-width:620px;font-size:12px;line-height:1.6;color:#aaa}
-.page-symbol{position:fixed;left:50%;top:50%;width:min(100vw,1100px);height:auto;pointer-events:none;z-index:0;opacity:.09;mix-blend-mode:screen;transform:translate(-50%,-50%) rotate(-7deg);transition:transform .25s ease-out;animation:symbolIntro 1.6s cubic-bezier(.2,.8,.2,1) both}
+.page-symbol{position:fixed;left:50%;top:50%;width:min(72vw,1100px);height:auto;pointer-events:none;z-index:0;opacity:0;mix-blend-mode:screen;transform:translate(-50%,-50%) rotate(-7deg);transition:opacity .8s ease, transform .25s ease-out, filter .8s ease;filter:blur(12px)}
+.page-symbol.is-visible{opacity:.12;filter:blur(0);transform:translate(-50%,-50%) rotate(-7deg)}
 .beyond-layout{display:grid;grid-template-columns:minmax(180px,.7fr) minmax(0,1.3fr);gap:8vw;align-items:start}
 .umbrella-logo{display:block;width:min(310px,100%);height:auto;margin:-55px 0 0}
 .beyond-copy{width:100%;max-width:1400px;margin-left:auto}
@@ -90,12 +111,13 @@ h2:hover{text-shadow:2px 0 rgba(255,35,75,.7),-2px 0 rgba(0,220,255,.7)}
 .social-link{display:inline-flex;align-items:center;gap:9px;border:1px solid #444!important;padding:10px 13px;color:#fff!important;font-size:12px;line-height:1;text-transform:uppercase;transition:.2s}
 .social-link:hover{background:#fff;color:#000!important}
 .social-link i{font-size:16px}
-.youtube-mini{position:fixed;right:22px;bottom:22px;width:min(360px,calc(100vw - 32px));padding:8px;background:#0a0a0a;border:1px solid #444;z-index:18;box-shadow:8px 8px 0 rgba(0,0,0,.35)}
+.youtube-mini{position:fixed;right:22px;bottom:22px;width:min(360px,calc(100vw - 32px));padding:8px;background:#0a0a0a;border:1px solid #444;z-index:18;box-shadow:8px 8px 0 rgba(0,0,0,.35);cursor:grab;user-select:none;touch-action:none;transition:box-shadow .2s ease, transform .2s ease}
+.youtube-mini.is-dragging{cursor:grabbing;box-shadow:12px 12px 0 rgba(0,0,0,.4);transform:scale(1.01)}
 .youtube-mini-head{display:flex;align-items:center;justify-content:space-between;padding:5px 3px 8px;color:#fff;font-size:11px;text-transform:uppercase;letter-spacing:1px}
 .youtube-mini-head i{color:#ff0033;margin-right:7px}
 .youtube-mini-close{border:0;background:none;color:#aaa;font-size:20px;line-height:1;cursor:pointer;padding:0 4px}
 .youtube-mini-close:hover{color:#fff}
-.youtube-mini iframe{display:block;width:100%;aspect-ratio:16/9;border:0}
+.youtube-mini iframe{display:block;width:100%;aspect-ratio:16/9;border:0;pointer-events:auto}
 .youtube-mini.is-hidden{display:none}
 .footer{padding:25px 5vw;display:flex;justify-content:space-between;align-items:center;gap:30px;font-size:10px;color:#666;text-transform:uppercase}
 .footer-brand{width:min(230px,42vw);height:70px;display:flex;align-items:center;justify-content:flex-start}
@@ -123,12 +145,18 @@ h2:hover{text-shadow:2px 0 rgba(255,35,75,.7),-2px 0 rgba(0,220,255,.7)}
 <body>
 <img class="page-symbol" src="LOGO%20PNG/simbolo%20em%20mov%20BRANCO.png" alt="" aria-hidden="true">
 <nav>
-  <a class="logo glitch" href="#inicio" aria-label="AKAPRECTO"><img class="brand-logo" src="LOGO%20PNG/simbolo%20BRANCO.png" alt="AKAPRECTO"></a>
   <div class="links"><a href="#sobre">sobre</a><a href="#musica">música</a><a href="#referencias">referências</a><a href="#fotos">fotos</a><a href="#shows">shows</a><a href="#booking">booking</a></div>
+  <a class="logo glitch" href="#inicio" aria-label="AKAPRECTO" style="justify-self:center;"><img class="brand-logo" src="LOGO%20PNG/simbolo%20BRANCO.png" alt="AKAPRECTO"></a>
+  <div class="nav-spacer" aria-hidden="true"></div>
 </nav>
 
 <header class="hero" id="inicio">
-  <h1 class="glitch"><img class="brand-logo hero-logo" src="LOGO%20PNG/logo%20horizontal%20BRANCO.png" alt="AKAPRECTO"></h1>
+  <div class="hero-brand">
+    <div class="hero-kanji" aria-hidden="true">生き甲斐</div>
+    <div class="hero-logo-wrap">
+      <h1 class="glitch"><img class="brand-logo hero-logo" src="LOGO%20PNG/logo%20horizontal%20BRANCO.png" alt="AKAPRECTO"></h1>
+    </div>
+  </div>
   <div class="kicker">DJ / PRODUTOR — SÃO PAULO, BR</div>
   <div class="hero-photo-stage">
     <figure class="hero-photo">
@@ -185,6 +213,15 @@ h2:hover{text-shadow:2px 0 rgba(255,35,75,.7),-2px 0 rgba(0,220,255,.7)}
     <div class="release spotify">
       <h3>EU VOU JOGAR</h3>
       <iframe title="Faixa do AKAPRECTO no Spotify" src="https://open.spotify.com/embed/track/1QhBdx9e3iDy1inGRfyfd0?utm_source=generator" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    </div>
+  </div>
+
+  <div class="video-showcase" aria-label="Vídeos do AKAPRECTO">
+    <div class="video-card featured">
+      <iframe src="https://www.youtube-nocookie.com/embed/5o8nYtGkGPo?rel=0&modestbranding=1" title="Vídeo principal do AKAPRECTO" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>
+    <div class="video-card">
+      <iframe src="https://www.youtube-nocookie.com/embed/0JKrLaMI7fo?rel=0&modestbranding=1" title="Vídeo secundário do AKAPRECTO" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     </div>
   </div>
 </section>
@@ -284,6 +321,13 @@ h2:hover{text-shadow:2px 0 rgba(255,35,75,.7),-2px 0 rgba(0,220,255,.7)}
   </div>
 </section>
 
+<div class="video-final-wrap" aria-label="Vídeo do AKAPRECTO">
+  <video autoplay muted loop playsinline preload="auto" aria-label="Vídeo do AKAPRECTO">
+    <source src="VIDEO%20NOVO%20YT.mp4" type="video/mp4">
+    Seu navegador não suporta vídeos em HTML5.
+  </video>
+</div>
+
 <footer class="footer">
   <div class="footer-brand"><img id="footer-logo" src="LOGO%20PNG/logo%20horizontal%20BRANCO.png" alt="Logo AKAPRECTO"></div>
   <span>AKAPRECTO © 2026</span>
@@ -295,6 +339,8 @@ h2:hover{text-shadow:2px 0 rgba(255,35,75,.7),-2px 0 rgba(0,220,255,.7)}
 </aside>
 <script>
   const pageSymbol = document.querySelector('.page-symbol');
+  const sobreSection = document.querySelector('#sobre');
+  const videoSection = document.querySelector('.video-final-wrap');
   const footerLogo = document.querySelector('#footer-logo');
   const whiteLogos = [
     ['LOGO%20PNG/logo%20horiz%20%2B%20simb%20BRANCO.png', 'Logo AKAPRECTO horizontal com símbolo'],
@@ -329,6 +375,42 @@ h2:hover{text-shadow:2px 0 rgba(255,35,75,.7),-2px 0 rgba(0,220,255,.7)}
   youtubePlayer.src = `https://www.youtube-nocookie.com/embed/${youtubeVideos[Math.floor(Math.random() * youtubeVideos.length)]}?rel=0&modestbranding=1`;
   youtubeMini.querySelector('.youtube-mini-close').addEventListener('click', () => youtubeMini.classList.add('is-hidden'));
 
+  let isDraggingMini = false;
+  let dragOffsetX = 0;
+  let dragOffsetY = 0;
+
+  youtubeMini.addEventListener('pointerdown', (event) => {
+    if (event.target.closest('.youtube-mini-close')) return;
+    isDraggingMini = true;
+    youtubeMini.classList.add('is-dragging');
+    const rect = youtubeMini.getBoundingClientRect();
+    dragOffsetX = event.clientX - rect.left;
+    dragOffsetY = event.clientY - rect.top;
+    youtubeMini.setPointerCapture(event.pointerId);
+  });
+
+  youtubeMini.addEventListener('pointermove', (event) => {
+    if (!isDraggingMini) return;
+    const maxLeft = window.innerWidth - youtubeMini.offsetWidth - 16;
+    const maxTop = window.innerHeight - youtubeMini.offsetHeight - 16;
+    const nextLeft = Math.min(Math.max(event.clientX - dragOffsetX, 16), maxLeft);
+    const nextTop = Math.min(Math.max(event.clientY - dragOffsetY, 16), maxTop);
+    youtubeMini.style.left = `${nextLeft}px`;
+    youtubeMini.style.top = `${nextTop}px`;
+    youtubeMini.style.right = 'auto';
+    youtubeMini.style.bottom = 'auto';
+  });
+
+  const stopDraggingMini = () => {
+    if (!isDraggingMini) return;
+    isDraggingMini = false;
+    youtubeMini.classList.remove('is-dragging');
+  };
+
+  youtubeMini.addEventListener('pointerup', stopDraggingMini);
+  youtubeMini.addEventListener('pointercancel', stopDraggingMini);
+  youtubeMini.addEventListener('lostpointercapture', stopDraggingMini);
+
   const showNextFooterLogo = () => {
     footerLogo.classList.remove('is-visible');
     setTimeout(() => {
@@ -342,6 +424,15 @@ h2:hover{text-shadow:2px 0 rgba(255,35,75,.7),-2px 0 rgba(0,220,255,.7)}
 
   footerLogo.classList.add('is-visible');
   setInterval(showNextFooterLogo, 2800);
+
+  const updateSymbolVisibility = () => {
+    if (!sobreSection || !videoSection) return;
+    const scrollPosition = window.scrollY + (window.innerHeight * 0.55);
+    const sobreStart = sobreSection.offsetTop;
+    const videoStart = videoSection.offsetTop;
+    const visible = scrollPosition >= sobreStart && scrollPosition < videoStart;
+    pageSymbol.classList.toggle('is-visible', visible);
+  };
 
   const updateEventParallax = () => {
     const bounds = photoStage.getBoundingClientRect();
@@ -365,9 +456,11 @@ h2:hover{text-shadow:2px 0 rgba(255,35,75,.7),-2px 0 rgba(0,220,255,.7)}
   window.addEventListener('scroll', () => {
     if (!scrollFrame) scrollFrame = requestAnimationFrame(updateEventParallax);
     updateHeroParallax();
+    updateSymbolVisibility();
   }, { passive: true });
   updateEventParallax();
   updateHeroParallax();
+  updateSymbolVisibility();
 
   const cards = Array.from(eventReel.children);
   for (let index = cards.length - 1; index > 0; index -= 1) {
